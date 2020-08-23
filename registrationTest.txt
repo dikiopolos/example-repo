@@ -1,0 +1,20 @@
+
+/* This is my new cucumber selenium-java step definition for user registration for practice with Git Branching. */
+
+@Before
+sfsdkflsadfj
+
+@After 
+driver.quit
+
+@Given
+driver.findElement(By.id("username").sendkeys("newUsername");
+driver.findElement(By.xpath("newpwd").sendKeys("newPassWord123");
+
+@When
+driver.findElement(By.name("submit").click();
+
+@Then
+some assertion that new user registration was successful
+
+
