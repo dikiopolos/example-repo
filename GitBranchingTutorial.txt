@@ -1,0 +1,460 @@
+** To revert to $ from : prompt (after doing diff or log), hit Q to Quit **
+
+1) Old folder: /c/users/dikio/repositories
+
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories
+$ ls -la
+total 228
+drwxr-xr-x 1 dikio 197609      0 Aug 23 13:36  ./
+drwxr-xr-x 1 dikio 197609      0 Aug 23 01:57  ../
+-rw-r--r-- 1 dikio 197609  80593 Aug 23 13:36 'Bash Dev CS.jpg'
+-rw-r--r-- 1 dikio 197609 123642 Aug 23 13:13 'Git CS.jpg'
+drwxr-xr-x 1 dikio 197609      0 Jun 22  2019  SmokeTests/
+drwxr-xr-x 1 dikio 197609      0 Jun 21  2019  Tests/
+drwxr-xr-x 1 dikio 197609      0 Jun 24  2019  Utilities/
+
+ 
+
+2) Created new folder called MyBranch    
+
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories
+$ mkdir MyBranch
+
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories   
+$ ls -la
+total 228
+drwxr-xr-x 1 dikio 197609      0 Aug 23 15:26  ./
+drwxr-xr-x 1 dikio 197609      0 Aug 23 01:57  ../
+-rw-r--r-- 1 dikio 197609  80593 Aug 23 13:36 'Bash Dev CS.jpg'
+-rw-r--r-- 1 dikio 197609 123642 Aug 23 13:13 'Git CS.jpg'
+drwxr-xr-x 1 dikio 197609      0 Aug 23 15:26  MyBranch/	<------ Created new folder
+drwxr-xr-x 1 dikio 197609      0 Jun 22  2019  SmokeTests/
+drwxr-xr-x 1 dikio 197609      0 Jun 21  2019  Tests/
+drwxr-xr-x 1 dikio 197609      0 Jun 24  2019  Utilities/
+
+** If you do Git Status now, it will return error: "fatal: not a git repository (or any of the parent directories): .git"
+ 
+	** Cloning the master (source) repo will copy all the files and create a .git directory ** 
+
+
+
+3) On web GitHub repository, opened repo that I want to work with, clicked the Clone/COPY icon
+	Click on Clone with HTTPS icon
+	https://github.com/dikiopolos/example-repo.git
+
+	
+
+4) CLONE the source code:  Returned to Bash, pasted the git repo into the clone command
+
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories/MyBranch
+$ git clone "https://github.com/dikiopolos/example-repo.git"
+Cloning into 'example-repo'...
+remote: Enumerating objects: 18, done.
+remote: Total 18 (delta 0), reused 0 (delta 0), pack-reused 18
+Unpacking objects: 100% (18/18), done.
+
+
+
+5) Open new MyBranch folder:  The cloned repo is there now
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories/MyBranch
+$ ls -la
+total 8
+drwxr-xr-x 1 dikio 197609 0 Aug 23 15:27 ./
+drwxr-xr-x 1 dikio 197609 0 Aug 23 15:26 ../
+drwxr-xr-x 1 dikio 197609 0 Aug 23 15:27 example-repo/
+
+
+
+6) Open the branch repo, the cloned files from the master are listed, and .git folder is present, so GIT STATUS will now work
+ 
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories/MyBranch/example-repo (master)
+$ ls -la
+total 11
+drwxr-xr-x 1 dikio 197609   0 Aug 23 15:27 ./
+drwxr-xr-x 1 dikio 197609   0 Aug 23 15:27 ../
+drwxr-xr-x 1 dikio 197609   0 Aug 23 15:27 .git/
+-rw-r--r-- 1 dikio 197609   0 Aug 23 15:27 .gitignore
+-rw-r--r-- 1 dikio 197609  34 Aug 23 15:27 index.html
+-rw-r--r-- 1 dikio 197609   0 Aug 23 15:27 log.txt
+-rw-r--r-- 1 dikio 197609 177 Aug 23 15:27 login.html
+-rw-r--r-- 1 dikio 197609  86 Aug 23 15:27 README.md
+
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories/MyBranch/example-repo (master)
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+
+
+** This is now MY BRANCH repository
+
+
+
+7) Now I want to create a new working branch where I will write new code.  The original repo had a sample login file.  I want to add a new test for the user registration process on my test site, so I will add a new branch to work in.  
+ 
+To create a new branch within my branch repo, do command: git branch (name of new branch)
+
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories/MyBranch/example-repo (master)
+$ git branch registration
+
+	dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories/MyBranch/example-repo (master)
+	$ ls -la
+	total 11
+	drwxr-xr-x 1 dikio 197609   0 Aug 23 15:27 ./
+	drwxr-xr-x 1 dikio 197609   0 Aug 23 15:27 ../
+	drwxr-xr-x 1 dikio 197609   0 Aug 23 15:28 .git/
+	-rw-r--r-- 1 dikio 197609   0 Aug 23 15:27 .gitignore
+	-rw-r--r-- 1 dikio 197609  34 Aug 23 15:27 index.html
+	-rw-r--r-- 1 dikio 197609   0 Aug 23 15:27 log.txt
+	-rw-r--r-- 1 dikio 197609 177 Aug 23 15:27 login.html
+	-rw-r--r-- 1 dikio 197609  86 Aug 23 15:27 README.md
+
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories/MyBranch/example-repo (master)
+$ git branch
+* master
+  registration		<----- Do git branch and it now shows you are on the MASTER "Registration" branch
+			<----- The * tells you the current branch, so you are currently on the master branch
+
+
+
+
+8) I need to switch from my current MASTER registration branch over to the BRANCH registration, do a git checkout command:
+
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories/MyBranch/example-repo (master)
+$ git branch
+* master 			<----- This was the current MASTER as indicated by the asterisk
+  registration
+
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories/MyBranch/example-repo (master)
+$ git checkout registration
+Switched to branch 'registration'	<--- Checkout command switched me to the BRANCH registration
+
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories/MyBranch/example-repo (registration)
+$
+
+
+
+
+9) After building the new test code for user registration, save the file in the branch.  
+
+ dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories/MyBranch/example-repo (registration)
+$ ls -la
+total 12
+drwxr-xr-x 1 dikio 197609   0 Aug 23 16:22 ./
+drwxr-xr-x 1 dikio 197609   0 Aug 23 15:27 ../
+drwxr-xr-x 1 dikio 197609   0 Aug 23 16:08 .git/
+-rw-r--r-- 1 dikio 197609   0 Aug 23 15:27 .gitignore
+-rw-r--r-- 1 dikio 197609  34 Aug 23 15:27 index.html
+-rw-r--r-- 1 dikio 197609   0 Aug 23 15:27 log.txt
+-rw-r--r-- 1 dikio 197609 177 Aug 23 15:27 login.html
+-rw-r--r-- 1 dikio 197609  86 Aug 23 15:27 README.md
+-rw-r--r-- 1 dikio 197609 434 Aug 23 16:22 registrationTest.txt
+
+
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories/MyBranch/example-repo (registration)
+$ git status
+On branch registration
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        registrationTest.txt		<------- Git Status now shows new file IN RED 
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+
+
+
+10) Now put the file in Staging:  GIT ADD filename     * Git Status now 
+
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories/MyBranch/example-repo (registration)
+$ git add registrationTest.txt
+
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories/MyBranch/example-repo (registration)
+$ git status
+On branch registration
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   registrationTest.txt 	<--- Git Status after Adding to staging area shows new file IN GREEN
+
+
+
+11) Need to COMMIT file to VERSIONED HISTORY using command:  GIT COMMIT -M "Some comment"
+
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories/MyBranch/example-repo (registration)
+$ git commit -m "New test file added"
+[registration 3c37d96] New test file added
+ 1 file changed, 20 insertions(+)
+ create mode 100644 registrationTest.txt
+
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories/MyBranch/example-repo (registration)
+$ git status
+On branch registration
+nothing to commit, working tree clean
+
+
+
+12) Check what branches you have on local:  GIT BRANCH
+
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories/MyBranch/example-repo (registration)
+$ git branch
+  master
+* registration 			<---- still have two branches, currently on BRANCH registration (did checkout earlier)
+
+
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories/MyBranch/example-repo (registration)
+$ ls -la
+total 12
+drwxr-xr-x 1 dikio 197609   0 Aug 23 16:42 ./
+drwxr-xr-x 1 dikio 197609   0 Aug 23 15:27 ../
+drwxr-xr-x 1 dikio 197609   0 Aug 23 16:42 .git/
+-rw-r--r-- 1 dikio 197609   0 Aug 23 15:27 .gitignore
+-rw-r--r-- 1 dikio 197609  34 Aug 23 15:27 index.html
+-rw-r--r-- 1 dikio 197609   0 Aug 23 15:27 log.txt
+-rw-r--r-- 1 dikio 197609 177 Aug 23 15:27 login.html
+-rw-r--r-- 1 dikio 197609  86 Aug 23 15:27 README.md
+-rw-r--r-- 1 dikio 197609 434 Aug 23 16:42 registrationTest.txt
+
+
+
+
+13) Return to Example-Repo local MASTER, the Registration file is not there 
+
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories/MyBranch/example-repo (master)
+$ ls -la
+total 11
+drwxr-xr-x 1 dikio 197609   0 Aug 23 16:38 ./
+drwxr-xr-x 1 dikio 197609   0 Aug 23 15:27 ../
+drwxr-xr-x 1 dikio 197609   0 Aug 23 16:38 .git/
+-rw-r--r-- 1 dikio 197609   0 Aug 23 15:27 .gitignore
+-rw-r--r-- 1 dikio 197609  34 Aug 23 15:27 index.html
+-rw-r--r-- 1 dikio 197609   0 Aug 23 15:27 log.txt
+-rw-r--r-- 1 dikio 197609 177 Aug 23 15:27 login.html
+-rw-r--r-- 1 dikio 197609  86 Aug 23 15:27 README.md     <----- registrationTest.txt is not present on MASTER
+
+
+
+14) To move to a different branch, use checkout command.  If was working on registration test, but now need to retest a fix for login issue.  Need to first move out of registration branch and back to master using checkout command:  
+
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories/MyBranch/example-repo (registration)
+$ ls -la
+total 12
+drwxr-xr-x 1 dikio 197609   0 Aug 23 16:42 ./
+drwxr-xr-x 1 dikio 197609   0 Aug 23 15:27 ../
+drwxr-xr-x 1 dikio 197609   0 Aug 23 16:42 .git/
+-rw-r--r-- 1 dikio 197609   0 Aug 23 15:27 .gitignore
+-rw-r--r-- 1 dikio 197609  34 Aug 23 15:27 index.html
+-rw-r--r-- 1 dikio 197609   0 Aug 23 15:27 log.txt
+-rw-r--r-- 1 dikio 197609 177 Aug 23 15:27 login.html
+-rw-r--r-- 1 dikio 197609  86 Aug 23 15:27 README.md
+-rw-r--r-- 1 dikio 197609 434 Aug 23 16:42 registrationTest.txt
+
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories/MyBranch/example-repo (registration)
+$ git checkout master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+
+
+15) Now create a new branch to work on login issue:  GIT BRANCH newbranchname
+
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories/MyBranch/example-repo (master)
+$ git branch loginFixTest
+
+
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories/MyBranch/example-repo (master)
+$ git branch
+  loginFixTest			<---- New branch is shown
+* master			<----- currently on master
+  registration			<------ registration branch is still shown
+
+
+
+16) Create the new file and save to Repositories/MyBranch/example-repo/ folder:  loginFixTest.txt  
+
+
+
+17) Switch to Loginfix branch using Checkout command
+
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories/MyBranch/example-repo (master)
+$ git checkout loginFixTest
+Switched to branch 'loginFixTest'
+
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories/MyBranch/example-repo (loginFixTest)
+$ ls -la
+total 15
+drwxr-xr-x 1 dikio 197609    0 Aug 23 17:17 ./
+drwxr-xr-x 1 dikio 197609    0 Aug 23 15:27 ../
+drwxr-xr-x 1 dikio 197609    0 Aug 23 17:18 .git/
+-rw-r--r-- 1 dikio 197609    0 Aug 23 15:27 .gitignore
+-rw-r--r-- 1 dikio 197609   34 Aug 23 15:27 index.html
+-rw-r--r-- 1 dikio 197609    0 Aug 23 15:27 log.txt
+-rw-r--r-- 1 dikio 197609  177 Aug 23 15:27 login.html
+-rw-r--r-- 1 dikio 197609 3107 Aug 23 17:10 loginFixTest.txt
+-rw-r--r-- 1 dikio 197609   86 Aug 23 15:27 README.md
+
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories/MyBranch/example-repo (loginFixTest)
+$ git status
+On branch loginFixTest
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        loginFixTest.txt			<---- New file is shown IN RED
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+
+
+18) Add the file to Staging area of the loginFix branch
+
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories/MyBranch/example-repo (loginFixTest)
+$ git add loginFixTest.txt
+
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories/MyBranch/example-repo (loginFixTest)
+$ git status
+On branch loginFixTest
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   loginFixTest.txt		<---- Added file is shown IN GREEN
+
+
+
+
+19) Commit the file to the VERSIONED HISTORY
+
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories/MyBranch/example-repo (loginFixTest)
+$ git commit -m "add new login regression test"
+[loginFixTest cb666ac] add new login regression test
+ 1 file changed, 92 insertions(+)
+ create mode 100644 loginFixTest.txt
+
+
+20) Modify an existing file and Add a new file:  Edit login.html and create new loginEdgeCase.html
+
+Add and commit the new files.  
+
+$ git status
+On branch loginFixTest
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   login.html
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        loginEdgecase.html
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories/MyBranch/example-repo (loginFixTest)
+$ git add loginEdgecase.html
+
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories/MyBranch/example-repo (loginFixTest)
+$ git add login.html
+
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories/MyBranch/example-repo (loginFixTest)
+$ git status
+On branch loginFixTest
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        modified:   login.html
+        new file:   loginEdgecase.html
+
+
+
+21) Show Differences between MASTER file and changed files:  GIT DIFF MASTER branchname
+
+$ git diff master loginFixTest
+diff --git a/login.html b/login.html
+index b58a621..27db1cd 100644
+--- a/login.html
++++ b/login.html
+@@ -4,7 +4,8 @@
+             Login Form
+             <body>
+                 //login code here
+-            </body>
++               // Add new scenarios here	<----- New update in branch is shown IN RED
++           </body>
+         </title>
+     </head>
+ </html>
+
+
+diff --git a/loginEdgecase.html b/loginEdgecase.html
+new file mode 100644
+index 0000000..92a51b6
+--- /dev/null
++++ b/loginEdgecase.html
+@@ -0,0 +1,11 @@
++<html>
++    <head>
++        <title>
++            Login Form
++            <body>
++                //login code here
++               // Add new edge case here
++            </body>
++        </title>
++    </head>
+
+
+	
+22) Merge the changes on the branch with the Master:  Change to Master, then do GIT MERGE branchname
+
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories/MyBranch/example-repo (master)
+$ git branch
+  loginFixTest
+* master
+  registration
+
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories/MyBranch/example-repo (master)
+$ git merge loginFixTest
+Updating 0fb6b45..69aadf4
+Fast-forward
+ login.html         |  3 +-
+ loginEdgecase.html | 11 +++++++
+ loginFixTest.txt   | 92 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 105 insertions(+), 1 deletion(-)
+ create mode 100644 loginEdgecase.html
+ create mode 100644 loginFixTest.txt
+
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories/MyBranch/example-repo (master)
+$ git diff master loginFixTest
+ 
+			<---- Diff no longer shows code differences after merging
+
+
+
+
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories/MyBranch/example-repo (master)
+$ git merge registration
+hint: Waiting for your editor to close the file...
+[main 2020-08-23T23:02:40.320Z] update#setState idle
+Merge made by the 'recursive' strategy.
+ registrationTest.txt | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
+ create mode 100644 registrationTest.txt
+
+
+23) Now Send files from local master to GitHub:  GIT PUSH ORIGIN MASTER
+
+dikio@LENOVO-IDEAPAD-130-15AST MINGW64 /c/users/dikio/repositories/MyBranch/example-repo (master)
+$ git push origin master
+Enumerating objects: 14, done.
+Counting objects: 100% (14/14), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (12/12), done.
+Writing objects: 100% (12/12), 2.50 KiB | 284.00 KiB/s, done.
+Total 12 (delta 5), reused 0 (delta 0)
+remote: Resolving deltas: 100% (5/5), completed with 1 local object.
+To https://github.com/dikiopolos/example-repo.git
+   0fb6b45..950e319  master -> master
+
+
+Go to GitHub:  New files with updated timestamps are shown
+
